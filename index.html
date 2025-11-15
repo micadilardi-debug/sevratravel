@@ -413,11 +413,9 @@
 
   <main>
    <section id="home">
-  <div class="hero-logo">
-    <img src="PHOTO-2025-11-15-06-31-44.jpg"
-         alt="SEVRA Travel Logo"
-         class="hero-logo-img" />
-  </div>
+<div class="hero-logo-wrapper">
+  <img src="Sevra Logo.png" alt="SEVRA Travel Logo" class="hero-logo-img">
+</div>
 
   <div class="hero-kicker">
     BESPOKE JOURNEYS · QUIET LUXURY · MODERN TRAVEL ATELIER
@@ -802,6 +800,19 @@
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
+}
+    .hero-logo-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.hero-logo-img {
+  width: 100%;
+  max-width: 520px;
+  display: block;
 }
 </style>
 </body>
