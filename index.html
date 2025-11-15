@@ -413,34 +413,30 @@
 
   <main>
     <!-- HERO -->
-    <section id="home">
-      <div class="wrapper hero-inner">
-        <div class="hero-copy">
-          <div class="hero-kicker">
-            BESPOKE JOURNEYS · QUIET LUXURY · MODERN TRAVEL ATELIER
-          </div>
-          <h1 class="hero-title">SEVRA TRAVEL</h1>
-          <p class="hero-text">
-            A discreet travel atelier curating considered itineraries for those
-            who value time, beauty, and ease. From spontaneous weekends to
-            milestone journeys, every detail is tailored — always with a soft
-            touch of understated glamour.
-          </p>
-          <div class="hero-buttons">
-            <a class="btn-main" href="#contact">Request a trip</a>
-            <a class="btn-ghost" href="#about">Discover our story</a>
-          </div>
-        </div>
+    <section id="home" class="hero-centered">
+  <div class="hero-logo">
+    <img src="PHOTO-2025-11-15-06-31-44.jpg"
+         alt="SEVRA Travel Logo"
+         class="hero-logo-img" />
+  </div>
 
-        <div class="hero-card">
-          <div class="hero-card-inner">
-            <div class="hero-logo-image">
-    <img src="PHOTO-2025-11-15-06-31-44.jpg" alt="SEVRA Travel Logo"
-     style="width:100%; max-width:520px; display:block; margin:0 auto;" />
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="hero-kicker">
+    BESPOKE JOURNEYS · QUIET LUXURY · MODERN TRAVEL ATELIER
+  </div>
+
+  <h1 class="hero-title">SEVRA TRAVEL</h1>
+
+  <p class="hero-text">
+    A discreet travel atelier curating considered itineraries for those who value
+    time, beauty, and ease. From spontaneous weekends to milestone journeys,
+    every detail is tailored — always with a soft touch of understated glamour.
+  </p>
+
+  <div class="hero-buttons">
+    <a class="btn-main" href="#contact">Request a trip</a>
+    <a class="btn-ghost" href="#about">Discover our story</a>
+  </div>
+</section>
     </section>
 
     <!-- ABOUT / STORY -->
@@ -744,17 +740,70 @@
   .contact-card p {
     font-size: 1.2rem;
     margin-bottom: 1rem;
-    color: var(--text-main);
-  }
+    color: var(--text-main);.contact-card p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
 
-  .contact-card a {
-    color: var(--gold-soft);
-    text-decoration: none;
-  }
+.contact-card a {
+  color: var(--gold-soft);
+  text-decoration: none;
+}
 
-  .contact-card a:hover {
-    color: var(--gold);
-  }
+.contact-card a:hover {
+  color: var(--gold);
+}
+
+/* --- Centered HERO layout (new Sevra logo setup) --- */
+
+#home.hero-centered {
+  text-align: center;
+  padding: 6rem 1rem 4rem 1rem;
+}
+
+.hero-logo {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto 2.5rem auto;
+}
+
+.hero-logo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.hero-kicker {
+  font-size: 0.9rem;
+  letter-spacing: 0.26em;
+  color: var(--gold-soft);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  letter-spacing: 0.3rem;
+  margin: 0 0 1.2rem 0;
+  color: var(--gold);
+}
+
+.hero-text {
+  max-width: 650px;
+  margin: 0 auto 2rem auto;
+  color: var(--text-soft);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 </style>
 </body>
 </html>
