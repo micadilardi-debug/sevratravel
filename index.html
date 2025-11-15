@@ -1,708 +1,662 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.2">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.AppleSystemUIFontMonospaced'; color: #870581}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.AppleSystemUIFontMonospaced'; color: #97007e}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.AppleSystemUIFontMonospaced'; color: #b50013}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.AppleSystemUIFontMonospaced'; color: #000000}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.AppleSystemUIFontMonospaced'; color: #6f5a1e}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.AppleSystemUIFontMonospaced'; color: #885d30}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.AppleSystemUIFontMonospaced'; color: #000000; min-height: 16.0px}
-    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.AppleSystemUIFontMonospaced'; color: #0d6401}
-    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.AppleSystemUIFontMonospaced'; color: #1400c4}
-    span.s1 {color: #97007e}
-    span.s2 {color: #6f5a1e}
-    span.s3 {color: #b50013}
-    span.s4 {color: #000000}
-    span.s5 {color: #1400c4}
-    span.s6 {color: #885d30}
+  <meta charset="UTF-8" />
+  <title>SEVRA Travel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050819;
+      --card: rgba(255, 255, 255, 0.05);
+      --border: rgba(255, 255, 255, 0.12);
+      --gold: #f4d37b;
+      --gold-soft: #f9e4a8;
+      --text-main: #f9fafb;
+      --text-soft: #9ca3af;
+      --text-muted: #6b7280;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Helvetica Neue", Arial, sans-serif;
+      background: radial-gradient(
+        circle at top,
+        #0b1024 0,
+        #050819 55%,
+        #020617 100%
+      );
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrapper {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* NAV */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(5, 8, 25, 0.9);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+    }
+
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-pill {
+      width: 110px;
+      height: 28px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--gold-soft), var(--gold));
+      opacity: 0.9;
+    }
+
+    .brand-text {
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      white-space: nowrap;
+    }
+
+    nav {
+      display: none;
+      gap: 1.75rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    @media (min-width: 900px) {
+      nav {
+        display: flex;
+      }
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 4rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    #home {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .hero-inner {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .hero-copy {
+      flex: 1;
+    }
+
+    .hero-kicker {
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-size: 2.6rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      font-weight: 300;
+      color: var(--gold-soft);
+      margin-bottom: 1.2rem;
+    }
+
+    @media (min-width: 900px) {
+      .hero-title {
+        font-size: 3.2rem;
+      }
+    }
+
+    .hero-text {
+      font-size: 0.95rem;
+      color: var(--text-soft);
+      max-width: 32rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.8rem;
+    }
+
+    .btn-main,
+    .btn-ghost {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      padding: 0.7rem 1.8rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-main {
+      background: var(--gold);
+      color: #000;
+      border-color: var(--gold);
+    }
+
+    .btn-main:hover {
+      background: var(--gold-soft);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--gold-soft);
+      border-color: rgba(250, 204, 21, 0.6);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(250, 204, 21, 0.07);
+    }
+
+    .hero-card {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-card-inner {
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 16/9;
+      border-radius: 28px;
+      border: 1px solid rgba(250, 204, 21, 0.25);
+      background: radial-gradient(
+        circle at top,
+        #111827 0,
+        #020617 60%,
+        #020617 100%
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+      text-align: center;
+    }
+
+    .hero-logo-main {
+      font-size: 1.9rem;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      font-weight: 300;
+    }
+
+    .hero-logo-sub {
+      margin-top: 0.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--gold-soft);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-lead {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      max-width: 32rem;
+    }
+
+    .two-col {
+      display: grid;
+      gap: 2.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .two-col {
+        grid-template-columns: 1.1fr 1fr;
+      }
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    .card-grid {
+      display: grid;
+      gap: 1.4rem;
+      margin-top: 2rem;
+    }
+
+    @media (min-width: 900px) {
+      .card-grid--3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .card-grid--2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      padding: 1.1rem 1.2rem;
+    }
+
+    .card-title {
+      font-size: 0.9rem;
+      color: var(--gold-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    .card-text {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    .pill-grid {
+      display: grid;
+      gap: 1.1rem;
+      margin-top: 1.8rem;
+    }
+
+    @media (min-width: 900px) {
+      .pill-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .pill {
+      height: 84px;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top left, #111827, #020617);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1.4rem;
+      font-size: 0.85rem;
+      color: var(--gold-soft);
+      font-weight: 300;
+    }
+
+    .quote {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      font-style: italic;
+    }
+
+    /* CONTACT */
+
+    .contact-grid {
+      display: grid;
+      gap: 2.3rem;
+      margin-top: 1.8rem;
+    }
+
+    @media (min-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1.1fr 1fr;
+      }
+    }
+
+    label {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--text-soft);
+      margin-bottom: 0.25rem;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border-radius: 999px;
+      padding: 0.6rem 0.9rem;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      font-size: 0.78rem;
+      outline: none;
+    }
+
+    textarea {
+      border-radius: 18px;
+      min-height: 110px;
+      resize: vertical;
+      padding-top: 0.7rem;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--gold);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.4rem 0 2.2rem;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
   </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE <span class="s1">html</span>&gt;</p>
-<p class="p2">&lt;html <span class="s2">lang</span>=<span class="s3">"en"</span>&gt;</p>
-<p class="p2">&lt;head&gt;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">  </span></span>&lt;meta <span class="s2">charset</span>=<span class="s3">"UTF-8"</span> /&gt;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">  </span></span>&lt;title&gt;<span class="s4">SEVRA Travel</span>&lt;/title&gt;</p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">  </span></span><span class="s1">&lt;meta </span><span class="s2">name</span><span class="s1">=</span>"viewport"<span class="s1"> </span><span class="s2">content</span><span class="s1">=</span>"width=device-width, initial-scale=1"<span class="s1"> /&gt;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">  </span></span>&lt;style&gt;</p>
-<p class="p4"><span class="Apple-converted-space">    </span>:root {</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s2">--bg</span>: <span class="s5">#050819</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s2">--card</span>: rgba(<span class="s5">255</span>,<span class="s5">255</span>,<span class="s5">255</span>,<span class="s5">0.05</span>);</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s2">--border</span>: rgba(<span class="s5">255</span>,<span class="s5">255</span>,<span class="s5">255</span>,<span class="s5">0.12</span>);</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s2">--gold</span>: <span class="s5">#f4d37b</span>;</p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">      </span></span>--gold-soft<span class="s4">: </span><span class="s5">#f9e4a8</span><span class="s4">;</span></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">      </span></span>--text-main<span class="s4">: </span><span class="s5">#f9fafb</span><span class="s4">;</span></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">      </span></span>--text-soft<span class="s4">: </span><span class="s5">#9ca3af</span><span class="s4">;</span></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">      </span></span>--text-muted<span class="s4">: </span><span class="s5">#6b7280</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p4"><span class="Apple-converted-space">    </span>* { <span class="s1">box-sizing</span>: border-box; }</p>
-<p class="p4"><span class="Apple-converted-space">    </span><span class="s1">body</span> {</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">margin</span>: <span class="s5">0</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">font-family</span>: system-ui, -apple-system, BlinkMacSystemFont, <span class="s3">"SF Pro Text"</span>,</p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s3">"Helvetica Neue"</span>, Arial, sans-serif;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">background</span>: radial-gradient(circle at top, <span class="s5">#0b1024</span> <span class="s5">0</span>, <span class="s5">#050819</span> <span class="s5">55%</span>, <span class="s5">#020617</span> <span class="s5">100%</span>);</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">color</span>: var(--text-main);</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>line-height<span class="s4">: </span><span class="s5">1.5</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p4"><span class="Apple-converted-space">    </span><span class="s1">a</span> { <span class="s1">color</span>: inherit; <span class="s1">text-decoration</span>: none; }</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.wrapper<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">max-width</span>: <span class="s5">1120px</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">margin</span>: <span class="s5">0</span> auto;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">padding</span>: <span class="s5">0</span> <span class="s5">1.5rem</span>;</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p7"><br></p>
-<p class="p8"><span class="s4"><span class="Apple-converted-space">    </span></span>/* NAV */</p>
-<p class="p4"><span class="Apple-converted-space">    </span><span class="s1">header</span> {</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">position</span>: sticky;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">top</span>: <span class="s5">0</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">z-index</span>: <span class="s5">20</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">backdrop-filter</span>: blur(<span class="s5">16px</span>);</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">background</span>: rgba(<span class="s5">5</span>, <span class="s5">8</span>, <span class="s5">25</span>, <span class="s5">0.9</span>);</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">border-bottom</span>: <span class="s5">1px</span> solid rgba(<span class="s5">255</span>,<span class="s5">255</span>,<span class="s5">255</span>,<span class="s5">0.05</span>);</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.nav-inner<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">display</span>: flex;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">align-items</span>: center;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">justify-content</span>: space-between;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">padding</span>: <span class="s5">0.9rem</span> <span class="s5">0</span>;</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.brand-mark<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">display</span>: flex;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">align-items</span>: center;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">gap</span>: <span class="s5">0.6rem</span>;</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.brand-pill<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">width</span>: <span class="s5">110px</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">height</span>: <span class="s5">28px</span>;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>border-radius<span class="s4">: </span><span class="s5">999px</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">background</span>: linear-gradient(<span class="s5">90deg</span>, var(--gold-soft), var(--gold));</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">opacity</span>: <span class="s5">0.9</span>;</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.brand-text<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">font-size</span>: <span class="s5">0.7rem</span>;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>letter-spacing<span class="s4">: </span><span class="s5">0.35em</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">text-transform</span>: uppercase;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">color</span>: var(--text-soft);</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">white-space</span>: nowrap;</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p4"><span class="Apple-converted-space">    </span><span class="s1">nav</span> {</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">display</span>: none;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">gap</span>: <span class="s5">1.75rem</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">font-size</span>: <span class="s5">0.7rem</span>;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>letter-spacing<span class="s4">: </span><span class="s5">0.18em</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">text-transform</span>: uppercase;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">color</span>: var(--text-soft);</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p4"><span class="Apple-converted-space">    </span><span class="s1">nav</span> <span class="s1">a</span>:hover { <span class="s1">color</span>: var(--gold); }</p>
-<p class="p7"><br></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>@media<span class="s4"> (</span>min-width<span class="s4">: </span><span class="s5">900px</span><span class="s4">) {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">nav</span> { <span class="s1">display</span>: flex; }</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p7"><br></p>
-<p class="p8"><span class="s4"><span class="Apple-converted-space">    </span></span>/* HERO */</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>section<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">padding</span>: <span class="s5">4rem</span> <span class="s5">0</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">border-bottom</span>: <span class="s5">1px</span> solid rgba(<span class="s5">255</span>,<span class="s5">255</span>,<span class="s5">255</span>,<span class="s5">0.05</span>);</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p4"><span class="Apple-converted-space">    </span><span class="s6">#home</span> {</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>min-height<span class="s4">: </span><span class="s5">70vh</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">display</span>: flex;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">align-items</span>: center;</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.hero-inner<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">display</span>: flex;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">flex-direction</span>: column;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">gap</span>: <span class="s5">2.5rem</span>;</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>@media<span class="s4"> (</span>min-width<span class="s4">: </span><span class="s5">900px</span><span class="s4">) {</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">      </span></span>.hero-inner<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">flex-direction</span>: row;</p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">align-items</span>: center;</p>
-<p class="p4"><span class="Apple-converted-space">      </span>}</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.hero-copy<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">flex</span>: <span class="s5">1</span>;</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.hero-kicker<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">font-size</span>: <span class="s5">0.72rem</span>;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>letter-spacing<span class="s4">: </span><span class="s5">0.35em</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">text-transform</span>: uppercase;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">color</span>: var(--gold-soft);</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>margin-bottom<span class="s4">: </span><span class="s5">1rem</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.hero-title<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">font-size</span>: <span class="s5">2.6rem</span>;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>letter-spacing<span class="s4">: </span><span class="s5">0.4em</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">text-transform</span>: uppercase;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>font-weight<span class="s4">: </span><span class="s5">300</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">color</span>: var(--gold-soft);</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>margin-bottom<span class="s4">: </span><span class="s5">1.2rem</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>@media<span class="s4"> (</span>min-width<span class="s4">: </span><span class="s5">900px</span><span class="s4">) {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s6">.hero-title</span> { <span class="s1">font-size</span>: <span class="s5">3.2rem</span>; }</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.hero-text<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">font-size</span>: <span class="s5">0.95rem</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">color</span>: var(--text-soft);</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">max-width</span>: <span class="s5">32rem</span>;</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.hero-buttons<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">display</span>: flex;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">flex-wrap</span>: wrap;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">gap</span>: <span class="s5">0.75rem</span>;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>margin-top<span class="s4">: </span><span class="s5">1.8rem</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.btn-main<span class="s4">,</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.btn-ghost<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">font-size</span>: <span class="s5">0.72rem</span>;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>letter-spacing<span class="s4">: </span><span class="s5">0.2em</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">text-transform</span>: uppercase;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>border-radius<span class="s4">: </span><span class="s5">999px</span><span class="s4">;</span></p>
-<p class="p9"><span class="s4"><span class="Apple-converted-space">      </span></span><span class="s1">padding</span><span class="s4">: </span>0.7rem<span class="s4"> </span>1.8rem<span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">border</span>: <span class="s5">1px</span> solid transparent;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">cursor</span>: pointer;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">display</span>: inline-flex;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">align-items</span>: center;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">justify-content</span>: center;</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.btn-main<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">background</span>: var(--gold);</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">color</span>: <span class="s5">#000</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">border-color</span>: var(--gold);</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p4"><span class="Apple-converted-space">    </span><span class="s6">.btn-main</span>:hover {</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">background</span>: var(--gold-soft);</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.btn-ghost<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">background</span>: transparent;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">color</span>: var(--gold-soft);</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">border-color</span>: rgba(<span class="s5">250</span>, <span class="s5">204</span>, <span class="s5">21</span>, <span class="s5">0.6</span>);</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p4"><span class="Apple-converted-space">    </span><span class="s6">.btn-ghost</span>:hover {</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">background</span>: rgba(<span class="s5">250</span>, <span class="s5">204</span>, <span class="s5">21</span>, <span class="s5">0.07</span>);</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p7"><br></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.hero-card<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">flex</span>: <span class="s5">1</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">display</span>: flex;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">justify-content</span>: center;</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.hero-card-inner<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">width</span>: <span class="s5">100%</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">max-width</span>: <span class="s5">360px</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">aspect-ratio</span>: <span class="s5">16</span> / <span class="s5">9</span>;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>border-radius<span class="s4">: </span><span class="s5">28px</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">border</span>: <span class="s5">1px</span> solid rgba(<span class="s5">250</span>, <span class="s5">204</span>, <span class="s5">21</span>, <span class="s5">0.25</span>);</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">background</span>: radial-gradient(circle at top, <span class="s5">#111827</span> <span class="s5">0</span>, <span class="s5">#020617</span> <span class="s5">60%</span>, <span class="s5">#020617</span> <span class="s5">100%</span>);</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">display</span>: flex;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">align-items</span>: center;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">justify-content</span>: center;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">box-shadow</span>: <span class="s5">0</span> <span class="s5">30px</span> <span class="s5">70px</span> rgba(<span class="s5">0</span>,<span class="s5">0</span>,<span class="s5">0</span>,<span class="s5">0.6</span>);</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.hero-logo-main<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">font-size</span>: <span class="s5">1.9rem</span>;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>letter-spacing<span class="s4">: </span><span class="s5">0.42em</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">text-transform</span>: uppercase;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">color</span>: var(--gold-soft);</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>font-weight<span class="s4">: </span><span class="s5">300</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">text-align</span>: center;</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.hero-logo-sub<span class="s4"> {</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>margin-top<span class="s4">: </span><span class="s5">0.5rem</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">font-size</span>: <span class="s5">0.7rem</span>;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>letter-spacing<span class="s4">: </span><span class="s5">0.45em</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">text-transform</span>: uppercase;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">color</span>: var(--gold-soft);</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">text-align</span>: center;</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p7"><br></p>
-<p class="p8"><span class="s4"><span class="Apple-converted-space">    </span></span>/* SECTIONS */</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.section-title<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">font-size</span>: <span class="s5">1.6rem</span>;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>font-weight<span class="s4">: </span><span class="s5">300</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">color</span>: var(--gold-soft);</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>margin-bottom<span class="s4">: </span><span class="s5">0.75rem</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.section-lead<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">font-size</span>: <span class="s5">0.9rem</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">color</span>: var(--text-soft);</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">max-width</span>: <span class="s5">32rem</span>;</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.two-col<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">display</span>: grid;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">gap</span>: <span class="s5">2.5rem</span>;</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>@media<span class="s4"> (</span>min-width<span class="s4">: </span><span class="s5">900px</span><span class="s4">) {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s6">.two-col</span> {</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">        </span></span>grid-template-columns<span class="s4">: </span><span class="s5">1.1</span><span class="s4">fr </span><span class="s5">1</span><span class="s4">fr;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span>}</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p4"><span class="Apple-converted-space">    </span><span class="s1">p</span> {</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">font-size</span>: <span class="s5">0.9rem</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">color</span>: var(--text-soft);</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p7"><br></p>
-<p class="p8"><span class="s4"><span class="Apple-converted-space">    </span></span>/* CARDS / GRIDS */</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.card-grid<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">display</span>: grid;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">gap</span>: <span class="s5">1.4rem</span>;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>margin-top<span class="s4">: </span><span class="s5">2rem</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>@media<span class="s4"> (</span>min-width<span class="s4">: </span><span class="s5">900px</span><span class="s4">) {</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">      </span></span>.card-grid--3<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">grid-template-columns</span>: repeat(<span class="s5">3</span>, minmax(<span class="s5">0</span>, <span class="s5">1</span>fr));</p>
-<p class="p4"><span class="Apple-converted-space">      </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">      </span></span>.card-grid--2<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">grid-template-columns</span>: repeat(<span class="s5">2</span>, minmax(<span class="s5">0</span>, <span class="s5">1</span>fr));</p>
-<p class="p4"><span class="Apple-converted-space">      </span>}</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p4"><span class="Apple-converted-space">    </span><span class="s6">.card</span> {</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">background</span>: var(--card);</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>border-radius<span class="s4">: </span><span class="s5">20px</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">border</span>: <span class="s5">1px</span> solid var(--border);</p>
-<p class="p9"><span class="s4"><span class="Apple-converted-space">      </span></span><span class="s1">padding</span><span class="s4">: </span>1.1rem<span class="s4"> </span>1.2rem<span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.card-title<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">font-size</span>: <span class="s5">0.9rem</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">color</span>: var(--gold-soft);</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>margin-bottom<span class="s4">: </span><span class="s5">0.4rem</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.card-text<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">font-size</span>: <span class="s5">0.8rem</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">color</span>: var(--text-soft);</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p7"><br></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.pill-grid<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">display</span>: grid;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">gap</span>: <span class="s5">1.1rem</span>;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>margin-top<span class="s4">: </span><span class="s5">1.8rem</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>@media<span class="s4"> (</span>min-width<span class="s4">: </span><span class="s5">900px</span><span class="s4">) {</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">      </span></span>.pill-grid<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">grid-template-columns</span>: repeat(<span class="s5">3</span>, minmax(<span class="s5">0</span>,<span class="s5">1</span>fr));</p>
-<p class="p4"><span class="Apple-converted-space">      </span>}</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p4"><span class="Apple-converted-space">    </span><span class="s6">.pill</span> {</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">height</span>: <span class="s5">84px</span>;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>border-radius<span class="s4">: </span><span class="s5">22px</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">border</span>: <span class="s5">1px</span> solid var(--border);</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">background</span>: radial-gradient(circle at top left, <span class="s5">#111827</span>, <span class="s5">#020617</span>);</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">display</span>: flex;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">align-items</span>: center;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">justify-content</span>: center;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">text-align</span>: center;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">padding</span>: <span class="s5">0</span> <span class="s5">1.4rem</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">font-size</span>: <span class="s5">0.85rem</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">color</span>: var(--gold-soft);</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>font-weight<span class="s4">: </span><span class="s5">300</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p7"><br></p>
-<p class="p8"><span class="s4"><span class="Apple-converted-space">    </span></span>/* TESTIMONIALS */</p>
-<p class="p4"><span class="Apple-converted-space">    </span><span class="s6">.quote</span> {</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">font-size</span>: <span class="s5">0.8rem</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">color</span>: var(--text-soft);</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">font-style</span>: italic;</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p7"><br></p>
-<p class="p8"><span class="s4"><span class="Apple-converted-space">    </span></span>/* CONTACT */</p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span>.contact-grid<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">display</span>: grid;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">gap</span>: <span class="s5">2.3rem</span>;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>margin-top<span class="s4">: </span><span class="s5">1.8rem</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>@media<span class="s4"> (</span>min-width<span class="s4">: </span><span class="s5">900px</span><span class="s4">) {</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">      </span></span>.contact-grid<span class="s4"> {</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">        </span></span>grid-template-columns<span class="s4">: </span><span class="s5">1.1</span><span class="s4">fr </span><span class="s5">1</span><span class="s4">fr;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span>}</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p4"><span class="Apple-converted-space">    </span><span class="s1">label</span> {</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">display</span>: block;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">font-size</span>: <span class="s5">0.72rem</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">color</span>: var(--text-soft);</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>margin-bottom<span class="s4">: </span><span class="s5">0.25rem</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>input<span class="s4">, </span>textarea<span class="s4"> {</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">width</span>: <span class="s5">100%</span>;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>border-radius<span class="s4">: </span><span class="s5">999px</span><span class="s4">;</span></p>
-<p class="p9"><span class="s4"><span class="Apple-converted-space">      </span></span><span class="s1">padding</span><span class="s4">: </span>0.6rem<span class="s4"> </span>0.9rem<span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">border</span>: <span class="s5">1px</span> solid var(--border);</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">background</span>: rgba(<span class="s5">15</span>,<span class="s5">23</span>,<span class="s5">42</span>,<span class="s5">0.9</span>);</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">color</span>: var(--text-main);</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">font-size</span>: <span class="s5">0.78rem</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">outline</span>: none;</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>textarea<span class="s4"> {</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>border-radius<span class="s4">: </span><span class="s5">18px</span><span class="s4">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>min-height<span class="s4">: </span><span class="s5">110px</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">resize</span>: vertical;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">      </span></span>padding-top<span class="s4">: </span><span class="s5">0.7rem</span><span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p4"><span class="Apple-converted-space">    </span><span class="s1">input</span>:focus, <span class="s1">textarea</span>:focus {</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">border-color</span>: var(--gold);</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p7"><br></p>
-<p class="p4"><span class="Apple-converted-space">    </span><span class="s1">footer</span> {</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">text-align</span>: center;</p>
-<p class="p9"><span class="s4"><span class="Apple-converted-space">      </span></span><span class="s1">padding</span><span class="s4">: </span>1.4rem<span class="s4"> </span>0<span class="s4"> </span>2.2rem<span class="s4">;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">font-size</span>: <span class="s5">0.7rem</span>;</p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">color</span>: var(--text-muted);</p>
-<p class="p4"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">  </span></span>&lt;/style&gt;</p>
-<p class="p2">&lt;/head&gt;</p>
-<p class="p2">&lt;body&gt;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">  </span></span>&lt;header&gt;</p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span>"wrapper nav-inner"<span class="s1">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">      </span></span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span>"brand-mark"<span class="s1">&gt;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">        </span></span>&lt;div <span class="s2">class</span>=<span class="s3">"brand-pill"</span>&gt;&lt;/div&gt;</p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"brand-text"</span><span class="s1">&gt;</span>SEVRA<span class="s5">&amp;nbsp;</span>TRAVEL<span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">&lt;nav&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;a </span><span class="s2">href</span><span class="s1">=</span><span class="s3">"#home"</span><span class="s1">&gt;</span>Home<span class="s1">&lt;/a&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;a </span><span class="s2">href</span><span class="s1">=</span><span class="s3">"#about"</span><span class="s1">&gt;</span>About<span class="s1">&lt;/a&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;a </span><span class="s2">href</span><span class="s1">=</span><span class="s3">"#services"</span><span class="s1">&gt;</span>Services<span class="s1">&lt;/a&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;a </span><span class="s2">href</span><span class="s1">=</span><span class="s3">"#destinations"</span><span class="s1">&gt;</span>Destinations<span class="s1">&lt;/a&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;a </span><span class="s2">href</span><span class="s1">=</span><span class="s3">"#partners"</span><span class="s1">&gt;</span>Partners<span class="s1">&lt;/a&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;a </span><span class="s2">href</span><span class="s1">=</span><span class="s3">"#advisors"</span><span class="s1">&gt;</span>Advisors<span class="s1">&lt;/a&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;a </span><span class="s2">href</span><span class="s1">=</span>"#testimonials"<span class="s1">&gt;</span><span class="s4">Words</span><span class="s1">&lt;/a&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;a </span><span class="s2">href</span><span class="s1">=</span><span class="s3">"#contact"</span><span class="s1">&gt;</span>Request a Trip<span class="s1">&lt;/a&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">&lt;/nav&gt;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;/div&gt;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">  </span></span>&lt;/header&gt;</p>
-<p class="p7"><br></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">  </span></span>&lt;main&gt;</p>
-<p class="p8"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;!-- HERO --&gt;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;section <span class="s2">id</span>=<span class="s3">"home"</span>&gt;</p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">      </span></span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span>"wrapper hero-inner"<span class="s1">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span>"hero-copy"<span class="s1">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">          </span></span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span>"hero-kicker"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span>BESPOKE JOURNEYS · QUIET LUXURY · MODERN TRAVEL ATELIER</p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;h1 </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"hero-title"</span><span class="s1">&gt;</span>SEVRA TRAVEL<span class="s1">&lt;/h1&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">          </span></span><span class="s1">&lt;p </span><span class="s2">class</span><span class="s1">=</span>"hero-text"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span>Curated itineraries and hotel experiences for discerning travelers who</p>
-<p class="p4"><span class="Apple-converted-space">            </span>value time, privacy, and beautifully considered details. From</p>
-<p class="p4"><span class="Apple-converted-space">            </span>last-minute city escapes to once-in-a-lifetime journeys, SEVRA designs</p>
-<p class="p4"><span class="Apple-converted-space">            </span>travel that feels effortless and deeply personal.</p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">          </span></span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span>"hero-buttons"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;a </span><span class="s2">href</span><span class="s1">=</span><span class="s3">"#contact"</span><span class="s1"> </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"btn-main"</span><span class="s1">&gt;</span>Request a Trip<span class="s1">&lt;/a&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;a </span><span class="s2">href</span><span class="s1">=</span><span class="s3">"#services"</span><span class="s1"> </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"btn-ghost"</span><span class="s1">&gt;</span>Explore Services<span class="s1">&lt;/a&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span>"hero-card"<span class="s1">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">          </span></span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span>"hero-card-inner"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"hero-logo-main"</span><span class="s1">&gt;</span>SEVRA<span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"hero-logo-sub"</span><span class="s1">&gt;</span>TRAVEL<span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;/section&gt;</p>
-<p class="p7"><br></p>
-<p class="p8"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;!-- ABOUT --&gt;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;section <span class="s2">id</span>=<span class="s3">"about"</span>&gt;</p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">      </span></span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span>"wrapper two-col"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;h2 </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"section-title"</span><span class="s1">&gt;</span>A modern luxury travel studio<span class="s1">&lt;/h2&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;p&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span>SEVRA Travel was created for travelers who want more than a standard</p>
-<p class="p4"><span class="Apple-converted-space">            </span>itinerary. We operate as a boutique travel atelier, crafting journeys</p>
-<p class="p4"><span class="Apple-converted-space">            </span>with the same intention and precision as a tailor-made garment. Every</p>
-<p class="p4"><span class="Apple-converted-space">            </span>stay, transfer, and experience is hand-selected through deep</p>
-<p class="p4"><span class="Apple-converted-space">            </span>relationships with the world’s leading hotels, resorts, and local</p>
-<p class="p4"><span class="Apple-converted-space">            </span>partners.</p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;p&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span>We balance data-driven insight with human instinct: understanding the</p>
-<p class="p4"><span class="Apple-converted-space">            </span>nuances of seasonality, access, and value while never losing sight of</p>
-<p class="p4"><span class="Apple-converted-space">            </span>how a place should feel the moment you walk in.</p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;div&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">          </span></span><span class="s1">&lt;h3 </span><span class="s2">class</span><span class="s1">=</span>"section-title"<span class="s1"> </span><span class="s2">style</span><span class="s1">=</span>"font-size:1.1rem;"<span class="s1">&gt;</span><span class="s4">Founder</span><span class="s1">&lt;/h3&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;p&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span>SEVRA Travel is led by Jordan, a longtime luxury travel professional</p>
-<p class="p4"><span class="Apple-converted-space">            </span>with a background in high-touch hospitality and global sales. Known</p>
-<p class="p4"><span class="Apple-converted-space">            </span>for a calm, detail-obsessed approach and a network that spans city</p>
-<p class="p4"><span class="Apple-converted-space">            </span>icons, remote retreats, and under-the-radar gems, Jordan believes the</p>
-<p class="p4"><span class="Apple-converted-space">            </span>most memorable trips are those that feel like they were quietly</p>
-<p class="p4"><span class="Apple-converted-space">            </span>designed just for you.</p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">          </span></span><span class="s1">&lt;p </span><span class="s2">style</span><span class="s1">=</span>"font-size:0.78rem; color:var(--text-muted);"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span>This section can be personalised with Jordan’s full bio, professional</p>
-<p class="p4"><span class="Apple-converted-space">            </span>background, and travel story.</p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;/section&gt;</p>
-<p class="p7"><br></p>
-<p class="p8"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;!-- SERVICES --&gt;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;section <span class="s2">id</span>=<span class="s3">"services"</span>&gt;</p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">      </span></span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span>"wrapper"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;h2 </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"section-title"</span><span class="s1">&gt;</span>Services<span class="s1">&lt;/h2&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;p </span><span class="s2">class</span><span class="s1">=</span>"section-lead"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span>From first idea to wheels up and check-out, SEVRA oversees every detail</p>
-<p class="p4"><span class="Apple-converted-space">          </span>so your only job is to enjoy the journey.</p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span>"card-grid card-grid--3"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card-title"</span><span class="s1">&gt;</span>Tailored Itineraries<span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card-text"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span>End-to-end trip design for solo travelers, couples, families, and</p>
-<p class="p4"><span class="Apple-converted-space">              </span>small groups, built around how you actually like to travel.</p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card-title"</span><span class="s1">&gt;</span>Hotel <span class="s5">&amp;amp;</span> Villa Curation<span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card-text"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span>Personalized recommendations across leading luxury brands,</p>
-<p class="p4"><span class="Apple-converted-space">              </span>independent gems, and private villas with added amenities where</p>
-<p class="p4"><span class="Apple-converted-space">              </span>available.</p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card-title"</span><span class="s1">&gt;</span>Flights <span class="s5">&amp;amp;</span> Transfers<span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card-text"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span>Assistance with premium cabins, private charters, and seamless</p>
-<p class="p4"><span class="Apple-converted-space">              </span>transfers so every transition feels smooth.</p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card-title"</span><span class="s1">&gt;</span>Experiences <span class="s5">&amp;amp;</span> Access<span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card-text"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span>From restaurant reservations and beach clubs to guides, galleries,</p>
-<p class="p4"><span class="Apple-converted-space">              </span>and after-hours openings – curated to your interests.</p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card-title"</span><span class="s1">&gt;</span>Celebrations <span class="s5">&amp;amp;</span> Milestones<span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card-text"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span>Honeymoons, anniversaries, birthdays, multi-generational trips, and</p>
-<p class="p4"><span class="Apple-converted-space">              </span>other moments that deserve extra thought and detail.</p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card-title"</span><span class="s1">&gt;</span>On-Trip Support<span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card-text"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span>Discreet support before and during travel for adjustments, upgrades,</p>
-<p class="p4"><span class="Apple-converted-space">              </span>and last-minute changes, subject to local availability.</p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;/section&gt;</p>
-<p class="p7"><br></p>
-<p class="p8"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;!-- DESTINATIONS --&gt;</p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;section </span><span class="s2">id</span><span class="s1">=</span>"destinations"<span class="s1">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">      </span></span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span>"wrapper"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;h2 </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"section-title"</span><span class="s1">&gt;</span>Destinations<span class="s1">&lt;/h2&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;p </span><span class="s2">class</span><span class="s1">=</span>"section-lead"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span>A focus on destinations where service, style, and atmosphere truly</p>
-<p class="p4"><span class="Apple-converted-space">          </span>matter – with a special love for the Mediterranean, Middle East, Indian</p>
-<p class="p4"><span class="Apple-converted-space">          </span>Ocean, and iconic city escapes.</p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span>"pill-grid"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"pill"</span><span class="s1">&gt;</span>Mediterranean <span class="s5">&amp;amp;</span> Iberia<span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"pill"</span><span class="s1">&gt;</span>Italy <span class="s5">&amp;amp;</span> The Islands<span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"pill"</span><span class="s1">&gt;</span>Middle East <span class="s5">&amp;amp;</span> Gulf<span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"pill"</span><span class="s1">&gt;</span>Indian Ocean <span class="s5">&amp;amp;</span> Maldives<span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"pill"</span><span class="s1">&gt;</span>Urban Icons <span class="s5">&amp;amp;</span> City Breaks<span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"pill"</span><span class="s1">&gt;</span>Wellness, Retreats <span class="s5">&amp;amp;</span> Nature<span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;/section&gt;</p>
-<p class="p7"><br></p>
-<p class="p8"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;!-- PARTNERS --&gt;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;section <span class="s2">id</span>=<span class="s3">"partners"</span>&gt;</p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">      </span></span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span>"wrapper two-col"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;h2 </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"section-title"</span><span class="s1">&gt;</span>Hotel <span class="s5">&amp;amp;</span> brand partnerships<span class="s1">&lt;/h2&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;p&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span>SEVRA works closely with leading luxury hotel groups, independent</p>
-<p class="p4"><span class="Apple-converted-space">            </span>properties, and on-the-ground partners to unlock thoughtful extras and</p>
-<p class="p4"><span class="Apple-converted-space">            </span>a more seamless experience for our travelers, subject to availability</p>
-<p class="p4"><span class="Apple-converted-space">            </span>and program participation.</p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">          </span></span><span class="s1">&lt;p </span><span class="s2">style</span><span class="s1">=</span>"font-size:0.78rem; color:var(--text-muted);"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span>Specific partner logos and programs can be added here once your</p>
-<p class="p4"><span class="Apple-converted-space">            </span>preferred networks are finalised.</p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span>"card-grid card-grid--2"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card-text"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span>Curated luxury hotel portfolios</p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card-text"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span>Independent design hotels <span class="s5">&amp;amp;</span> villas</p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card-text"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span>Destination management <span class="s5">&amp;amp;</span> local experts</p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card-text"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span>Restaurant, beach club <span class="s5">&amp;amp;</span> cultural partners</p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;/section&gt;</p>
-<p class="p7"><br></p>
-<p class="p8"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;!-- ADVISORS --&gt;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;section <span class="s2">id</span>=<span class="s3">"advisors"</span>&gt;</p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">      </span></span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span>"wrapper two-col"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;h2 </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"section-title"</span><span class="s1">&gt;</span>A boutique advisor model<span class="s1">&lt;/h2&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;p&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span>SEVRA intentionally remains small so every trip receives the attention</p>
-<p class="p4"><span class="Apple-converted-space">            </span>it deserves. A limited number of advisors and trusted collaborators</p>
-<p class="p4"><span class="Apple-converted-space">            </span>work behind the scenes to research, confirm, and fine-tune each</p>
-<p class="p4"><span class="Apple-converted-space">            </span>detail.</p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;p&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span>If you are a travel professional interested in collaborating, this</p>
-<p class="p4"><span class="Apple-converted-space">            </span>section can include an invitation to connect, outlining the profile of</p>
-<p class="p4"><span class="Apple-converted-space">            </span>advisors SEVRA partners with.</p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"quote"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span>“The goal is for clients to feel both held and completely free —</p>
-<p class="p4"><span class="Apple-converted-space">              </span>knowing someone is quietly orchestrating the details in the</p>
-<p class="p4"><span class="Apple-converted-space">              </span>background so they can simply enjoy where they are.”</p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">          </span></span><span class="s1">&lt;p </span><span class="s2">style</span><span class="s1">=</span>"font-size:0.78rem; color:var(--text-muted); margin-top:0.7rem;"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span>This line can be replaced with a personal quote from Jordan about</p>
-<p class="p4"><span class="Apple-converted-space">            </span>SEVRA’s philosophy.</p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;/section&gt;</p>
-<p class="p7"><br></p>
-<p class="p8"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;!-- TESTIMONIALS --&gt;</p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;section </span><span class="s2">id</span><span class="s1">=</span>"testimonials"<span class="s1">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">      </span></span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span>"wrapper"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;h2 </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"section-title"</span><span class="s1">&gt;</span>Client words<span class="s1">&lt;/h2&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;p </span><span class="s2">class</span><span class="s1">=</span>"section-lead"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span>Placeholder testimonials you can replace with real client feedback as</p>
-<p class="p4"><span class="Apple-converted-space">          </span>SEVRA grows.</p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span>"card-grid card-grid--3"<span class="s1"> </span><span class="s2">style</span><span class="s1">=</span>"margin-top:1.7rem;"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"quote"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span>“Every detail felt thought through without being over-planned. It</p>
-<p class="p4"><span class="Apple-converted-space">              </span>was the first trip where we truly switched off.”</p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"quote"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span>“From the room choices to restaurant bookings, it felt like Jordan</p>
-<p class="p4"><span class="Apple-converted-space">              </span>knew exactly what would work for us.”</p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"card"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"quote"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span>“The balance of luxury, comfort, and authenticity was perfect. We’re</p>
-<p class="p4"><span class="Apple-converted-space">              </span>already planning the next trip.”</p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;/section&gt;</p>
-<p class="p7"><br></p>
-<p class="p8"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;!-- CONTACT --&gt;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;section <span class="s2">id</span>=<span class="s3">"contact"</span>&gt;</p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">      </span></span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span>"wrapper"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;h2 </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"section-title"</span><span class="s1">&gt;</span>Request a trip<span class="s1">&lt;/h2&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;p </span><span class="s2">class</span><span class="s1">=</span>"section-lead"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span>Share a few details about your plans and SEVRA will be in touch with</p>
-<p class="p4"><span class="Apple-converted-space">          </span>next steps, proposed timing, and how the process works.</p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p7"><br></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;div </span><span class="s2">class</span><span class="s1">=</span>"contact-grid"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">&lt;p </span><span class="s2">style</span><span class="s1">=</span>"font-size:0.8rem; color:var(--text-muted);"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span>This form is front-end only for now. You or your developer can later</p>
-<p class="p4"><span class="Apple-converted-space">              </span>connect it to your preferred inbox or CRM.</p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">&lt;p </span><span class="s2">style</span><span class="s1">=</span>"font-size:0.82rem; margin-top:1rem;"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span>Email:</p>
-<p class="p4"><span class="Apple-converted-space">              </span><span class="s1">&lt;span </span><span class="s2">style</span><span class="s1">=</span><span class="s3">"color:var(--gold-soft);"</span><span class="s1">&gt;</span> hello@sevratravel.com<span class="s1">&lt;/span&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span>(placeholder)</p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">&lt;p </span><span class="s2">style</span><span class="s1">=</span>"font-size:0.82rem;"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span>Instagram:</p>
-<p class="p4"><span class="Apple-converted-space">              </span><span class="s1">&lt;span </span><span class="s2">style</span><span class="s1">=</span><span class="s3">"color:var(--gold-soft);"</span><span class="s1">&gt;</span> @sevratravel<span class="s1">&lt;/span&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span>(placeholder)</p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;form&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">              </span></span><span class="s1">&lt;div </span><span class="s2">style</span><span class="s1">=</span>"display:grid; gap:0.8rem;"<span class="s1">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s1">&lt;div </span><span class="s2">style</span><span class="s1">=</span>"display:grid; gap:0.8rem; grid-template-columns:1fr 1fr;"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                  </span><span class="s1">&lt;div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                    </span><span class="s1">&lt;label&gt;</span>Name<span class="s1">&lt;/label&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                    </span></span><span class="s1">&lt;input </span><span class="s2">type</span><span class="s1">=</span>"text"<span class="s1"> </span><span class="s2">placeholder</span><span class="s1">=</span>"Your full name"<span class="s1"> /&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                  </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                  </span><span class="s1">&lt;div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                    </span><span class="s1">&lt;label&gt;</span>Email<span class="s1">&lt;/label&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                    </span></span><span class="s1">&lt;input </span><span class="s2">type</span><span class="s1">=</span>"email"<span class="s1"> </span><span class="s2">placeholder</span><span class="s1">=</span>"you@example.com"<span class="s1"> /&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                  </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s1">&lt;div </span><span class="s2">style</span><span class="s1">=</span>"display:grid; gap:0.8rem; grid-template-columns:1fr 1fr;"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                  </span><span class="s1">&lt;div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                    </span><span class="s1">&lt;label&gt;</span>Destination(s)<span class="s1">&lt;/label&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                    </span></span><span class="s1">&lt;input </span><span class="s2">type</span><span class="s1">=</span>"text"<span class="s1"> </span><span class="s2">placeholder</span><span class="s1">=</span>"Amalfi, Dubai, Maldives…"<span class="s1"> /&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                  </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                  </span><span class="s1">&lt;div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                    </span><span class="s1">&lt;label&gt;</span>Approximate dates<span class="s1">&lt;/label&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                    </span></span><span class="s1">&lt;input </span><span class="s2">type</span><span class="s1">=</span>"text"<span class="s1"> </span><span class="s2">placeholder</span><span class="s1">=</span>"Month / year or exact dates"<span class="s1"> /&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                  </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s1">&lt;div </span><span class="s2">style</span><span class="s1">=</span>"display:grid; gap:0.8rem; grid-template-columns:1fr 1fr;"<span class="s1">&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                  </span><span class="s1">&lt;div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                    </span><span class="s1">&lt;label&gt;</span>Travel style<span class="s1">&lt;/label&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                    </span></span><span class="s1">&lt;input </span><span class="s2">type</span><span class="s1">=</span>"text"<span class="s1"> </span><span class="s2">placeholder</span><span class="s1">=</span>"Relaxed, discovery, celebration…"<span class="s1"> /&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                  </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                  </span><span class="s1">&lt;div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                    </span><span class="s1">&lt;label&gt;</span>Indicative budget<span class="s1">&lt;/label&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                    </span></span><span class="s1">&lt;input </span><span class="s2">type</span><span class="s1">=</span>"text"<span class="s1"> </span><span class="s2">placeholder</span><span class="s1">=</span>"Total trip or per night"<span class="s1"> /&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                  </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                </span><span class="s1">&lt;div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                  </span><span class="s1">&lt;label&gt;</span>Anything else we should know?<span class="s1">&lt;/label&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                  </span></span><span class="s1">&lt;textarea </span><span class="s2">placeholder</span><span class="s1">=</span>"Occasion, who is travelling, must-haves, preferences…"<span class="s1">&gt;&lt;/textarea&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                </span><span class="s1">&lt;div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                  </span><span class="s1">&lt;button </span><span class="s2">class</span><span class="s1">=</span><span class="s3">"btn-main"</span><span class="s1"> </span><span class="s2">type</span><span class="s1">=</span><span class="s3">"submit"</span><span class="s1">&gt;</span>Submit Request<span class="s1">&lt;/button&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">                </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">              </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">            </span><span class="s1">&lt;/form&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">          </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">        </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p4"><span class="Apple-converted-space">      </span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span>&lt;/section&gt;</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">  </span></span>&lt;/main&gt;</p>
-<p class="p7"><br></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">  </span></span>&lt;footer&gt;</p>
-<p class="p4"><span class="Apple-converted-space">    </span>© SEVRA Travel. All rights reserved.</p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">  </span></span>&lt;/footer&gt;</p>
-<p class="p2">&lt;/body&gt;</p>
-<p class="p2">&lt;/html&gt;</p>
+  <header>
+    <div class="wrapper nav-inner">
+      <div class="brand-mark">
+        <div class="brand-pill"></div>
+        <div class="brand-text">SEVRA TRAVEL</div>
+      </div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about">Story</a>
+        <a href="#services">Services</a>
+        <a href="#destinations">Destinations</a>
+        <a href="#partners">Partners</a>
+        <a href="#advisors">Advisors</a>
+        <a href="#testimonials">Words</a>
+        <a href="#contact">Request a Trip</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home">
+      <div class="wrapper hero-inner">
+        <div class="hero-copy">
+          <div class="hero-kicker">
+            BESPOKE JOURNEYS · QUIET LUXURY · MODERN TRAVEL ATELIER
+          </div>
+          <h1 class="hero-title">SEVRA TRAVEL</h1>
+          <p class="hero-text">
+            A discreet travel atelier curating considered itineraries for those
+            who value time, beauty, and ease. From spontaneous weekends to
+            milestone journeys, every detail is tailored — always with a soft
+            touch of understated glamour.
+          </p>
+          <div class="hero-buttons">
+            <a class="btn-main" href="#contact">Request a trip</a>
+            <a class="btn-ghost" href="#about">Discover our story</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <div>
+              <div class="hero-logo-main">SEVRA</div>
+              <div class="hero-logo-sub">TRAVEL ATELIER</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / STORY -->
+    <section id="about">
+      <div class="wrapper two-col">
+        <div>
+          <h2 class="section-title">A modern love letter to travel</h2>
+          <p class="section-lead">
+            Sevra Travel was born from a shared obsession with thoughtful
+            journeys — the kind that feel effortless, deeply personal, and just
+            a little bit cinematic.
+          </p>
+        </div>
+        <div>
+          <p>
+            We believe luxury today is less about excess and more about how a
+            trip makes you feel: seen, understood, and completely at ease. From
+            the first idea to your return home, we handle the invisible
+            architecture behind every journey so you can simply arrive and be
+            present.
+          </p>
+          <p>
+            Our role is part curator, part producer, part confidant — quietly
+            orchestrating the right rooms, tables, drivers, guides, and
+            surprises in between.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="wrapper">
+        <h2 class="section-title">What we quietly take care of</h2>
+        <p class="section-lead">
+          From first sketch to final car home, Sevra sits in the background so
+          your journey can take center stage.
+        </p>
+
+        <div class="card-grid card-grid--3">
+          <div class="card">
+            <div class="card-title">Tailor-made itineraries</div>
+            <p class="card-text">
+              Fully bespoke journeys built around the way you like to move,
+              sleep, eat, and explore — not around templates or pre-set tours.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-title">Hotel & villa curation</div>
+            <p class="card-text">
+              Hand-picked stays with the right vibe, not just the right star
+              rating — from urban hideaways to remote retreats.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-title">On-the-ground arrangements</div>
+            <p class="card-text">
+              Transfers, restaurant access, experiences, guides, and last-minute
+              tweaks — all handled with a producer’s eye for timing and flow.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESTINATIONS / STYLE -->
+    <section id="destinations">
+      <div class="wrapper">
+        <h2 class="section-title">Where we love to send you</h2>
+        <p class="section-lead">
+          From European city breaks to long-haul escapes, Sevra specializes in
+          journeys that balance design, culture, nature, and ease of movement.
+        </p>
+
+        <div class="pill-grid">
+          <div class="pill">Mediterranean summers · Amalfi, Ibiza, Greek isles</div>
+          <div class="pill">Design-driven city stays · Paris, London, New York</div>
+          <div class="pill">Slow itineraries · wine country, coastlines, spa retreats</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNERS / ADVISORS -->
+    <section id="partners">
+      <div class="wrapper two-col">
+        <div>
+          <h2 class="section-title">Partners & access</h2>
+          <p class="section-lead">
+            Sevra works with a tight network of luxury hotels, DMCs, and
+            specialist partners to unlock the right rooms, experiences, and
+            added touches for each trip.
+          </p>
+        </div>
+        <div>
+          <p>
+            From preferred partners and VIP programs to on-the-ground fixers,
+            we choose collaborators who share our values: discretion, warmth,
+            and an obsession with detail.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="advisors">
+      <div class="wrapper">
+        <h2 class="section-title">Your advisor</h2>
+        <p class="section-lead">
+          Sevra Travel is led by Jordan, your dedicated travel advisor and first
+          call for anything you need before, during, or after your journey.
+        </p>
+
+        <div class="card-grid card-grid--2" style="margin-top:2rem;">
+          <div class="card">
+            <div class="card-title">Jordan · Lead Travel Advisor</div>
+            <p class="card-text">
+              Jordan brings a calm, detail-driven approach to every journey —
+              balancing creativity with flawless execution. From first ideas to
+              in-trip changes, you’ll always deal with one person who knows your
+              preferences by heart.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-title">Contact Jordan</div>
+            <p class="card-text">
+              Email: <strong>jordan@example.com</strong><br />
+              Phone/WhatsApp: <strong>+1&nbsp;000&nbsp;000&nbsp;0000</strong><br />
+              Instagram: <strong>@jordans_handle</strong>
+            </p>
+            <p class="card-text" style="margin-top:0.6rem;">
+              (We’ll update these details to match Jordan’s business card once
+              you’re ready.)
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+      <div class="wrapper">
+        <h2 class="section-title">Words that mean the most</h2>
+        <p class="section-lead">
+          A few of the ways clients have described their Sevra journeys.
+        </p>
+
+        <div class="card-grid card-grid--3">
+          <div class="card">
+            <p class="quote">
+              “Every detail was already handled before we even thought to ask.”
+            </p>
+          </div>
+          <div class="card">
+            <p class="quote">
+              “The trip felt like us — not like something pulled from a brochure.”
+            </p>
+          </div>
+          <div class="card">
+            <p class="quote">
+              “Sevra somehow made a complex multi-stop trip feel completely
+              effortless.”
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="wrapper">
+        <h2 class="section-title">Start a conversation</h2>
+        <p class="section-lead">
+          Share a few details and Jordan will be in touch to shape your next
+          journey.
+        </p>
+
+        <div class="contact-grid">
+          <div>
+            <form>
+              <div style="margin-bottom:0.9rem;">
+                <label for="name">Name</label>
+                <input id="name" type="text" placeholder="Your name" />
+              </div>
+              <div style="margin-bottom:0.9rem;">
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="you@email.com" />
+              </div>
+              <div style="margin-bottom:0.9rem;">
+                <label for="details">Trip ideas & timing</label>
+                <textarea
+                  id="details"
+                  placeholder="Where are you thinking of going, and when?"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn-main">Send request</button>
+            </form>
+          </div>
+          <div>
+            <p>
+              Prefer to reach out directly? Connect with Jordan via email,
+              WhatsApp, or Instagram and we’ll start crafting from there.
+            </p>
+            <p>
+              Once we confirm the brief, you’ll receive a first itinerary outline
+              and estimated budget before we fine-tune every detail together.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    SEVRA Travel · Quiet, considered journeys. All rights reserved.
+  </footer>
 </body>
 </html>
